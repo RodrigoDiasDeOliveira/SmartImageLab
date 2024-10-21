@@ -36,7 +36,7 @@ outputs.tf: Define outputs for easier access to resource information.
 Terraform Script Example:
 
 hcl
-Copiar código
+
 provider "oci" {
   region = var.region
 }
@@ -59,7 +59,7 @@ resource "oci_core_instance" "instance" {
 Create terraform.tfvars:
 
 hcl
-Copiar código
+
 region             = "us-phoenix-1"
 availability_domain = "Phx2"
 compartment_id     = "ocid1.compartment.oc1..example"
