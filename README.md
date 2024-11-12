@@ -1,5 +1,5 @@
 # SmartImageLab
-Sugere um laboratório para experimentação com imagens de forma inteligente.
+Um laboratório para experimentação com imagens de forma inteligente.
 modelo de software em Python que utilize a API da OpenAI e a infraestrutura da Oracle Cloud para tratamento, classificação e identificação de imagens. O código será estruturado em classes para facilitar a organização e a reutilização.
 
 ![ImageLab](https://github.com/user-attachments/assets/1e29fdc1-cb87-4346-990f-398117c89017)
