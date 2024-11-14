@@ -1,0 +1,27 @@
+# config/config.yaml
+
+api_keys:
+  openai: "SUA_CHAVE_DE_API_OPENAI_AQUI_E_DEPOIS_DE_USAR_RETIRE"
+  oracle_cloud: "SUA_CHAVE_DE_API_ORACLE_CLOUD_AQUI_NAO_DEIXO_MINHA_CHAVE_AQUI_PAPAI"
+
+oracle_cloud:
+  bucket_name: "nome_do_bucket"
+  namespace: "seu_namespace"
+
+model_paths:
+  resnet50: "imagenet"
+  yolov5: "yolov5s.pt"
+
+logging:
+  error_log: "errors.log"
+  image_operations_log: "image_operations.log"
+
+image_processing:
+  resize: true
+  target_size: [224, 224]
+  color_mode: "RGB"
+
+pipeline:
+  enable_classification: true
+  enable_identification: true
+  enable_storage: true
