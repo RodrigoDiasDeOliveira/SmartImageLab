@@ -10,3 +10,5 @@ variable "availability_domain" {
 variable "ssh_public_key_path" {
   description = "Caminho para a chave SSH pública"
 }
+variable "ssh_public_key_path" { type = string }
+

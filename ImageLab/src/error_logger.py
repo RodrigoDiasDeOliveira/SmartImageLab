@@ -1,16 +1,15 @@
-# src/error_logger.py
 import logging
-
 class ErrorLogger:
-    def __init__(self, log_file='errors.log'):
-        logging.basicConfig(filename=log_file, level=logging.ERROR)
-
-    def log_error(self, error):
-        logging.error(str(error))
-
+    def __init__(self, log_file="logs/errors.log"):
+        self.logger = logging.getLogger("errors")
+        if not self.logger.handlers:
+            h = logging.FileHandler(log_file)
+            h.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+            self.logger.addHandler(h)
+            self.logger.setLevel(logging.ERROR)
+    def log_error(self, error): self.logger.error(str(error))
     def handle_api_error(self, response):
-        if response.status_code != 200:
-            error_message = f"API error: {response.status_code} - {response.text}"
-            self.log_error(error_message)
+        if getattr(response, "status_code", 200) != 200:
+            self.log_error(f"API {response.status_code}: {response.text}")
             return False
         return True

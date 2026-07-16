@@ -1,4 +1,9 @@
 # main.tf
+terraform {
+  required_version = ">= 1.5"
+  required_providers { oci = { source = "oracle/oci", version = ">= 5.0" } }
+}
+
 provider "oci" {
   config_file = "~/.oci/config"
   profile     = "DEFAULT"  # Altere para o nome do perfil, se necessário
