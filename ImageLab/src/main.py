@@ -1,3 +1,4 @@
+# src/main.py
 import sys, json
 from .image_pipeline import ImagePipeline
 

@@ -1,3 +1,4 @@
+# src/image_logger.py
 import logging
 class ImageLogger:
     def __init__(self, log_file="logs/image_operations.log"):

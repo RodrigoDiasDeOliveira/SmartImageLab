@@ -1,3 +1,4 @@
+# src/error_logger.py
 import logging
 class ErrorLogger:
     def __init__(self, log_file="logs/errors.log"):

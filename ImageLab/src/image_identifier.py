@@ -1,3 +1,4 @@
+# src/image_identifier.py
 import torch
 from PIL import Image
 

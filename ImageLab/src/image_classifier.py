@@ -1,3 +1,4 @@
+# src/image_classifier.py
 import numpy as np
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
 from tensorflow.keras.utils import img_to_array

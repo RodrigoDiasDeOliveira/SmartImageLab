@@ -73,28 +73,27 @@ Configure OCI: Ensure your ~/.oci/config file is correctly set up.
 
 Navigate to the Terraform Directory:
 
-bash
+
 cd terraform
 Initialize Terraform:
 
-bash
+
 terraform init
 Plan the Infrastructure:
 
-bash
 terraform plan
 Apply the Configuration:
 
-bash
+
 terraform apply
 Software Usage
 Install Dependencies:
 
-bash
+
 pip install -r requirements.txt
 Run the Application:
 
-bash
+
 python src/main.py
 License
 This project is licensed under the MIT License. See the LICENSE file for more information.
@@ -386,21 +385,21 @@ A infraestrutura é provisionada usando Terraform. Antes de executar o Terraform
 2. **Configurar OCI**: Certifique-se de que seu arquivo `~/.oci/config` está corretamente configurado.
 3. **Navegar até o diretório do Terraform**:
 
-   ```bash
+   
    cd terraform
 Inicializar o Terraform:
 
-bash
+
 terraform init
 Preencher as variáveis: Crie um arquivo terraform.tfvars com os valores apropriados.
 
 Planejar a infraestrutura:
 
-bash
+
 terraform plan
 Aplicar a configuração:
 
-bash
+
 terraform apply
 Uso do Software
 Instalar Dependências:
@@ -408,8 +407,15 @@ Instalar Dependências:
 bash
 pip install -r requirements.txt
 Executar o Aplicativo:
+## Desenvolvimento
 
-bash
+pip install -e ".[dev]"
+ruff check . && ruff format --check .
+mypy ImageLab
+pytest
+docker build -t smartimagelab .
+
+
 python src/main.py
 Licença
 Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais informações.
