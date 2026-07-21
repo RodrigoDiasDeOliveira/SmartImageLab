@@ -2,6 +2,7 @@
 import numpy as np
 from PIL import Image
 
+
 class ImageClassifier:
     def __init__(self, weights="imagenet"):
         from tensorflow.keras.applications.resnet50 import (

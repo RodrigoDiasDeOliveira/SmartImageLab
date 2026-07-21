@@ -1,6 +1,7 @@
 # src/image_identifier.py
 from PIL import Image
 
+
 class ImageIdentifier:
     def __init__(self, model_name="yolov5s"):
         import torch
