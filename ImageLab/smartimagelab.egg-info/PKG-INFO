@@ -17,6 +17,7 @@ Requires-Dist: ultralytics>=8.2.0
 Requires-Dist: oci>=2.126.0
 Requires-Dist: python-dotenv>=1.0.1
 Requires-Dist: pydantic>=2.7.0
+Requires-Dist: tensorflow>=2.16.0
 Provides-Extra: dev
 Requires-Dist: pytest>=8.2.0; extra == "dev"
 Requires-Dist: pytest-cov>=5.0.0; extra == "dev"
