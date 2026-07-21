@@ -1,0 +1,2 @@
+[console_scripts]
+smartimagelab = src.__main__:main

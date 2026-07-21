@@ -2,6 +2,7 @@
 import torch
 from PIL import Image
 
+
 class ImageIdentifier:
     def __init__(self, model_name="yolov5s"):
         self.model = torch.hub.load("ultralytics/yolov5", model_name, pretrained=True)

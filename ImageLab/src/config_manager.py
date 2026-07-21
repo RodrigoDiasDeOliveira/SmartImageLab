@@ -1,5 +1,6 @@
 # src/config_manager.py
 import os
+
 import yaml
 
 
@@ -9,7 +10,6 @@ class ConfigManager:
     def __new__(cls, config_path="config/config.yaml"):
 
         if cls._instance is None:
-
             cls._instance = super().__new__(cls)
 
             cls._instance.config = {}
@@ -21,7 +21,7 @@ class ConfigManager:
 
     def _load(self, path):
 
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             self.config = yaml.safe_load(f) or {}
 
     def get(self, *keys, default=None):
@@ -29,7 +29,6 @@ class ConfigManager:
         node = self.config
 
         for key in keys:
-
             if isinstance(node, dict) and key in node:
                 node = node[key]
             else:

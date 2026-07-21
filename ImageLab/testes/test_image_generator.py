@@ -1,5 +1,7 @@
 from unittest.mock import MagicMock, patch
+
 from src.image_generator import ImageGenerator
+
 
 @patch("src.image_generator.OpenAI")
 def test_generate_returns_url(mock_openai: MagicMock) -> None:

@@ -8,4 +8,6 @@ tensorflow>=2.16
 numpy>=1.26
 torch>=2.2
 torchvision>=0.17
-pandas>=2.2
+pandas>=2.
+pytest
+pytest-cov

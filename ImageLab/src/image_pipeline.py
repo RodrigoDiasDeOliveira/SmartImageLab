@@ -1,17 +1,16 @@
 # src/image_pipeline.py
-from .image_generator import ImageGenerator
-from .image_preprocessor import ImagePreprocessor
+from .config_manager import ConfigManager
+from .error_logger import ErrorLogger
 from .image_classifier import ImageClassifier
+from .image_generator import ImageGenerator
 from .image_identifier import ImageIdentifier
+from .image_logger import ImageLogger
+from .image_preprocessor import ImagePreprocessor
 from .image_storage import ImageStorage
 from .image_validator import ImageValidator
-from .image_logger import ImageLogger
-from .error_logger import ErrorLogger
-from .config_manager import ConfigManager
 
 
 class ImagePipeline:
-
     def __init__(self):
         cfg = ConfigManager()
         self.flags = cfg.get("pipeline", default={}) or {}
@@ -21,22 +20,14 @@ class ImagePipeline:
         self.validator = ImageValidator()
 
         self.classifier = (
-            ImageClassifier()
-            if self.flags.get("enable_classification")
-            else None
+            ImageClassifier() if self.flags.get("enable_classification") else None
         )
 
         self.identifier = (
-            ImageIdentifier()
-            if self.flags.get("enable_identification")
-            else None
+            ImageIdentifier() if self.flags.get("enable_identification") else None
         )
 
-        self.storage = (
-            ImageStorage()
-            if self.flags.get("enable_storage")
-            else None
-        )
+        self.storage = ImageStorage() if self.flags.get("enable_storage") else None
 
         self.log = ImageLogger()
         self.err = ErrorLogger()
@@ -61,8 +52,7 @@ class ImagePipeline:
         if self.identifier:
             result["identification"] = self.identifier.identify(processed)
 
-        if self.storage:
-            if self.storage.upload_image(processed, image_name):
-                self.log.log_upload(image_name)
+        if self.storage and self.storage.upload_image(processed, image_name):
+            self.log.log_upload(image_name)
 
         return result

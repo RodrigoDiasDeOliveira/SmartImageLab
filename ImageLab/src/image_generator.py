@@ -32,7 +32,6 @@ class ImageGenerator:
     def generate(self, prompt: str, size="1024x1024"):
 
         try:
-
             response = self.client.images.generate(
                 model="gpt-image-1",
                 prompt=prompt,
@@ -69,14 +68,12 @@ class ImageGenerator:
     def download_image(self, url):
 
         try:
-
             response = requests.get(url, timeout=30)
             response.raise_for_status()
 
             return Image.open(io.BytesIO(response.content))
 
         except Exception as exc:
-
             self.err.log_error(f"download_image(): {exc}")
 
             return None

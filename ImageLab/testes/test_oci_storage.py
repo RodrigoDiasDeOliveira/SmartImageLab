@@ -1,7 +1,6 @@
 from unittest.mock import MagicMock
 
 from PIL import Image
-
 from src.image_storage import ImageStorage
 
 

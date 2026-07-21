@@ -26,7 +26,6 @@ class ImageStorage:
         # Unit tests
         #
         if client is not None:
-
             self.client = client
             self.bucket = bucket or "test-bucket"
             self.namespace = namespace or "test-namespace"
@@ -54,13 +53,9 @@ class ImageStorage:
             default="DEFAULT",
         )
 
-        oci_cfg = oci.config.from_file(
-            profile_name=profile
-        )
+        oci_cfg = oci.config.from_file(profile_name=profile)
 
-        self.client = oci.object_storage.ObjectStorageClient(
-            oci_cfg
-        )
+        self.client = oci.object_storage.ObjectStorageClient(oci_cfg)
 
     def upload_image(
         self,
@@ -70,7 +65,6 @@ class ImageStorage:
     ) -> bool:
 
         try:
-
             buffer = io.BytesIO()
 
             image.save(buffer, format=fmt)
@@ -87,10 +81,7 @@ class ImageStorage:
             return True
 
         except Exception as exc:
-
-            self.err.log_error(
-                f"upload {object_name}: {exc}"
-            )
+            self.err.log_error(f"upload {object_name}: {exc}")
 
             return False
 
@@ -100,21 +91,15 @@ class ImageStorage:
     ):
 
         try:
-
             response = self.client.get_object(
                 self.namespace,
                 self.bucket,
                 object_name,
             )
 
-            return Image.open(
-                io.BytesIO(response.data.content)
-            )
+            return Image.open(io.BytesIO(response.data.content))
 
         except Exception as exc:
-
-            self.err.log_error(
-                f"download {object_name}: {exc}"
-            )
+            self.err.log_error(f"download {object_name}: {exc}")
 
             return None

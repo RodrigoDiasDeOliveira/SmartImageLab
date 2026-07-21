@@ -36,7 +36,6 @@ class ImagePreprocessor:
         return np.asarray(image)
 
     def to_tensor(self, image):
-
         """
         Returns a NumPy tensor (C,H,W).
 

@@ -44,9 +44,7 @@ class ImageValidator:
         """
 
         return (
-            isinstance(image, Image.Image)
-            and image.size[0] > 0
-            and image.size[1] > 0
+            isinstance(image, Image.Image) and image.size[0] > 0 and image.size[1] > 0
         )
 
     def validate_model_path(self, model_path) -> bool:
