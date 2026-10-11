@@ -1,4 +1,6 @@
 # SmartImageLab
+
+> Implementation evidence note: the maintained package lives under ImageLab/. Some setup, entrypoint and infrastructure examples in this README do not match the tracked layout. See the [README/code implementation review](docs/audit/smartimagelab-code-implementation-review-2026-10-11.md) before relying on those commands.
 Um laboratório para experimentação com imagens de forma inteligente.
 modelo de software em Python que utilize a API da OpenAI e a infraestrutura da Oracle Cloud para tratamento, classificação e identificação de imagens. O código será estruturado em classes para facilitar a organização e a reutilização.
 
