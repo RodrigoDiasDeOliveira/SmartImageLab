@@ -1,9 +1,10 @@
 # src/image_generator.py
 import base64
+import binascii
 import io
 
 import requests
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 from PIL import Image
 
 from .config_manager import ConfigManager
@@ -49,7 +50,7 @@ class ImageGenerator:
 
             return None
 
-        except Exception as exc:
+        except (OpenAIError, OSError, ValueError, binascii.Error) as exc:
             self.err.log_error(f"generate(): {exc}")
             return None
 
@@ -73,7 +74,7 @@ class ImageGenerator:
 
             return Image.open(io.BytesIO(response.content))
 
-        except Exception as exc:
+        except (requests.exceptions.RequestException, OSError, ValueError) as exc:
             self.err.log_error(f"download_image(): {exc}")
 
             return None
