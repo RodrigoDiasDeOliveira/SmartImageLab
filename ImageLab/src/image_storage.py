@@ -80,7 +80,7 @@ class ImageStorage:
 
             return True
 
-        except Exception as exc:
+        except (oci.exceptions.ServiceError, OSError, ValueError) as exc:
             self.err.log_error(f"upload {object_name}: {exc}")
 
             return False
@@ -99,7 +99,7 @@ class ImageStorage:
 
             return Image.open(io.BytesIO(response.data.content))
 
-        except Exception as exc:
+        except (oci.exceptions.ServiceError, OSError, ValueError) as exc:
             self.err.log_error(f"download {object_name}: {exc}")
 
             return None
