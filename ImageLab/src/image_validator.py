@@ -1,5 +1,6 @@
 # src/image_validator.py
 from pathlib import Path
+from typing import ClassVar
 
 from PIL import Image
 
@@ -9,19 +10,23 @@ class ImageValidator:
     Validation utilities for images and AI models.
     """
 
-    VALID_MODEL_EXTENSIONS = {
-        ".h5",
-        ".pt",
-        ".pth",
-        ".onnx",
-    }
+    VALID_MODEL_EXTENSIONS: ClassVar[frozenset[str]] = frozenset(
+        {
+            ".h5",
+            ".pt",
+            ".pth",
+            ".onnx",
+        }
+    )
 
-    MODEL_ALIASES = {
-        "imagenet",
-        "yolov5s",
-        "yolov5m",
-        "yolov5l",
-    }
+    MODEL_ALIASES: ClassVar[frozenset[str]] = frozenset(
+        {
+            "imagenet",
+            "yolov5s",
+            "yolov5m",
+            "yolov5l",
+        }
+    )
 
     def is_valid(self, image_path) -> bool:
         """
@@ -34,7 +39,13 @@ class ImageValidator:
             image.verify()
             return True
 
-        except Exception:
+        except (
+            OSError,
+            ValueError,
+            SyntaxError,
+            TypeError,
+            Image.DecompressionBombError,
+        ):
             return False
 
     def validate_image(self, image) -> bool:
